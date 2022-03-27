@@ -65,7 +65,7 @@ RUN wget http://phar.phpunit.cn/phpunit-6.5.phar; \
     phpunit --version
 
 RUN pecl install redis; \
-    pecl install mcrypt-1.0.0; \
+    pecl install mcrypt; \
     pecl install memcached; \
     pecl install mongodb; \
     pecl install imagick; \
