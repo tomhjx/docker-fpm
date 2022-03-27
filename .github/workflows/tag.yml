@@ -28,7 +28,7 @@ jobs:
       - name: Push
         run: |
           DOCKER_RELEASE_TAG="tomhjx/fpm:${GITHUB_REF_NAME}-centos7"
-          docker build -f ${{ github.workspace }}/docker/build/Dockerfile.centos7 -t $DOCKER_RELEASE_TAG
+          docker build ${{ github.workspace }}/docker/build -f Dockerfile.centos7 -t $DOCKER_RELEASE_TAG
           docker push $DOCKER_RELEASE_TAG
 
 
