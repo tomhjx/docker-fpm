@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Tag
+name: Deploy
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -27,8 +27,8 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push
         run: |
-          DOCKER_RELEASE_TAG="tomhjx/fpm:${GITHUB_REF_NAME}-centos7"
-          docker build ${{ github.workspace }}/docker/build -f ./Dockerfile.centos7 -t $DOCKER_RELEASE_TAG
+          DOCKER_RELEASE_TAG="tomhjx/fpm:${{ github.ref }}-centos7"
+          docker build -f ${{ github.workspace }}/docker/build/Dockerfile.centos7 -t $DOCKER_RELEASE_TAG .
           docker push $DOCKER_RELEASE_TAG
 
 
