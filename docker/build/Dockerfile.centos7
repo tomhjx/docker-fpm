@@ -1,7 +1,7 @@
 FROM centos:7
 MAINTAINER "Tom" <tom_hejiaxi@163.com>
 
-ENV PHP_VERSION 7.1.4
+ENV PHP_VERSION 7.4.9
 ENV TMP_PATH /tmp/uve_core_install
 
 #install php src
@@ -22,7 +22,7 @@ RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == system
     tar xjf php-${PHP_VERSION}.tar.bz2; \
     cd php-${PHP_VERSION}; \
     echo "Configure PHP..."; \
-    ./configure --prefix=/usr/local/php --enable-fpm --with-fpm-user=www --with-fpm-group=www --enable-opcache --enable-phpdbg --enable-phpdbg-webhelper --with-openssl  --with-zlib --enable-calendar --enable-bcmath --with-bz2 --with-curl --enable-gd --with-jpeg --with-png-dir --with-freetype --with-gettext --enable-mbstring --disable-mbregex --with-mysqli --enable-pcntl --enable-shmop --enable-sockets --enable-sysvsem --enable-shmop --with-mhash --with-mysql-sock --enable-pdo --with-pdo-mysql --with-pear; \
+    ./configure --prefix=/usr/local/php --enable-fpm --with-fpm-user=www --with-fpm-group=www --enable-opcache --enable-phpdbg --enable-phpdbg-webhelper --with-openssl  --with-zlib --enable-calendar --enable-bcmath --with-bz2 --with-curl --enable-gd --with-jpeg --with-png-dir --with-freetype --with-gettext --enable-mbstring --disable-mbregex --with-mcrypt --with-mysqli --enable-pcntl --enable-shmop --enable-sockets --enable-sysvsem --enable-shmop --with-mhash --with-mysql-sock --enable-pdo --with-pdo-mysql --with-pear; \
     echo "Compiling PHP..."; \
     make -j${NPROC}; \
     make install;
@@ -65,11 +65,8 @@ RUN wget http://phar.phpunit.cn/phpunit-6.5.phar; \
     phpunit --version
 
 RUN pecl install redis; \
-    pecl install mcrypt; \
-    pecl install memcached; \
-    pecl install mongodb; \
-    pecl install imagick; \
-    pecl install yaconf;
+    pecl install yaconf; \
+    pecl install xdebug;
     
 COPY start.sh /start.sh
 
