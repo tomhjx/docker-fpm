@@ -27,9 +27,5 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push
         run: |
-          DOCKER_RELEASE_TAG="tomhjx/fpm:${GITHUB_REF_NAME}-centos7"
-          cd ${{ github.workspace }}/docker/build
-          docker build -f Dockerfile.centos7 -t $DOCKER_RELEASE_TAG .
-          docker push $DOCKER_RELEASE_TAG
-
+          ${{ github.workspace }}/pub-docker-image.sh "tomhjx/fpm:${GITHUB_REF_NAME}"
 
