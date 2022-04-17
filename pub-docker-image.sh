@@ -8,7 +8,8 @@ do
     then
         tag1="${f##*/}"
         tag="$tag0-$tag1"
-        docker build -t $tag
-        docker push $tag
+        echo $f:$tag
+        # docker build $f -t $tag
+        # docker push $tag
     fi
 done
