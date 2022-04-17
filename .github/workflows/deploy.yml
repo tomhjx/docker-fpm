@@ -27,5 +27,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       - name: Push
         run: |
-          ${{ github.workspace }}/pub-docker-image.sh "tomhjx/fpm:${GITHUB_REF_NAME}"
+          DOCKER_RELEASE_TAG="tomhjx/fpm:${GITHUB_REF_NAME}"
+          ${{ github.workspace }}/pub-docker-image.sh $DOCKER_RELEASE_TAG
+
 
