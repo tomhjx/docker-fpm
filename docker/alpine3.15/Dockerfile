@@ -206,6 +206,15 @@ RUN set -eux; \
 
 COPY docker-php-ext-* docker-php-entrypoint /usr/local/bin/
 
+
+RUN wget http://phar.phpunit.cn/phpunit-6.5.phar; \
+    chmod +x phpunit-6.5.phar; \
+    mv phpunit-6.5.phar /usr/local/bin/phpunit; \
+    phpunit --version
+
+RUN pecl install redis; \
+	pecl install yaconf;
+
 # sodium was built as a shared module (so that it can be replaced later if so desired), so let's enable it too (https://github.com/docker-library/php/issues/598)
 RUN docker-php-ext-enable sodium
 
