@@ -186,6 +186,8 @@ RUN set -eux; \
 	\
 	cd /; \
 	docker-php-source delete; \
+	pecl install redis; \
+	pecl install yaconf; \
 	\
 	runDeps="$( \
 		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local \
@@ -200,9 +202,6 @@ RUN set -eux; \
 # update pecl channel definitions https://github.com/docker-library/php/issues/443
 	pecl update-channels; \
 	rm -rf /tmp/pear ~/.pearrc; \
-	\
-	pecl install redis; \
-	pecl install yaconf; \
 # smoke test
 	php --version
 
