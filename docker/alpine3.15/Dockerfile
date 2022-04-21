@@ -103,6 +103,27 @@ RUN set -eux; \
 		openssl-dev \
 		readline-dev \
 		sqlite-dev \
+		freetype-dev \
+		git \
+		libjpeg-turbo-dev \
+		libpng-dev \
+		libzip-dev \
+		openssh-client \
+		php7-json \
+		php7-openssl \
+		php7-pdo \
+		php7-pdo_mysql \
+		php7-session \
+		php7-simplexml \
+		php7-tokenizer \
+		php7-xml \
+		imagemagick \
+		imagemagick-libs \
+		imagemagick-dev \
+		php7-imagick \
+		php7-pcntl \
+		php7-zip \
+		sqlite \
 	; \
 	\
 # make sure musl's iconv doesn't get used (https://www.php.net/manual/en/intro.iconv.php)
@@ -155,6 +176,7 @@ RUN set -eux; \
 		--enable-gd \ 
 		--with-jpeg \
 		--with-png-dir \
+		--with-freetype \
 		\
 		--with-mysqli \
 		--with-mysql-sock \
