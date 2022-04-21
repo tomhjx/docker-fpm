@@ -175,7 +175,6 @@ RUN set -eux; \
 		\
 		--enable-gd \ 
 		--with-jpeg \
-		--with-png-dir \
 		--with-freetype \
 		\
 		--with-mysqli \
@@ -215,10 +214,12 @@ RUN set -eux; \
 # https://github.com/docker-library/php/issues/692 (copy default example "php.ini" files somewhere easily discoverable)
 	cp -v php.ini-* "$PHP_INI_DIR/"; \
 	\
-	cd /; \
-	docker-php-source delete; \
 	pecl install redis; \
 	pecl install yaconf; \
+	pecl install imagick; \
+	\
+	cd /; \
+	docker-php-source delete; \
 	\
 	runDeps="$( \
 		scanelf --needed --nobanner --format '%n#p' --recursive /usr/local \
