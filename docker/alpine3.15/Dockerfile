@@ -217,6 +217,7 @@ RUN set -eux; \
 	pecl install redis; \
 	pecl install yaconf; \
 	pecl install imagick; \
+	pecl install mongodb; \
 	\
 	cd /; \
 	docker-php-source delete; \
