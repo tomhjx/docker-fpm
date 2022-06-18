@@ -243,7 +243,8 @@ COPY docker-php-ext-* docker-php-entrypoint /usr/local/bin/
 RUN wget http://phar.phpunit.cn/phpunit-6.5.phar; \
     chmod +x phpunit-6.5.phar; \
     mv phpunit-6.5.phar /usr/local/bin/phpunit; \
-    phpunit --version
+    phpunit --version; \
+	curl -sS https://getcomposer.org/installer | /usr/local/php/bin/php;mv composer.phar /usr/local/bin/composer
 
 # sodium was built as a shared module (so that it can be replaced later if so desired), so let's enable it too (https://github.com/docker-library/php/issues/598)
 RUN docker-php-ext-enable sodium
