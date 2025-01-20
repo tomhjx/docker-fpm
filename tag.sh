@@ -1,8 +1,8 @@
 #!/bin/bash
 
-b='7.4.9'
+b='7.2.34'
 
-tag=$(git describe --tags `git rev-list --tags="7.4.9.*" --max-count=1`)
+tag=$(git describe --tags `git rev-list --tags="7.2.34.*" --max-count=1`)
 
 echo $tag
 
